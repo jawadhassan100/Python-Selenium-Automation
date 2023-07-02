@@ -15,8 +15,7 @@ time.sleep(2)
 elem = driver.find_element(By.NAME, "search_query")
 elem.send_keys("ncs background music")
 elem.send_keys(Keys.RETURN)
-
-# Wait for the page to load
+# Get the video duration
 time.sleep(2)
 
 # Click on the first video
