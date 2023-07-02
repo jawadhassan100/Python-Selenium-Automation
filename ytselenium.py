@@ -23,9 +23,13 @@ video = driver.find_element(By.XPATH ,'//*[@id="video-title"]/yt-formatted-strin
 video.click()
 
 # Wait for the page to load
-time.sleep(5)
-
-
+# time.sleep(2)
+ad_end_time = time.time() + 30 # The ad is expected to last 30 seconds
+if time.time() < ad_end_time:
+    time.sleep(1)
+else:
+    # The ad has finished playing
+    pass
 # Get the video duration
 duration_element = driver.find_element(By.XPATH, '//span[@class="ytp-time-duration"]')
 duration_text = duration_element.get_attribute("innerHTML")
@@ -36,5 +40,5 @@ duration_seconds = int(duration_parts[-1]) + int(duration_parts[-2]) * 60
 time.sleep(duration_seconds)
 
 # Close the browser
-driver.quit()
+driver.close()
 
